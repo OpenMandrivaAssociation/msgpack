@@ -1,10 +1,10 @@
-%define major 3
+%define major 2
 %define libname %mklibname msgpack %{major}
 %define devname %mklibname msgpack -d
 %define staticname %mklibname msgpack -d -s
 
 Name: msgpack
-Version: 1.3.0
+Version: 1.4.1
 Release: 1
 Source0: https://github.com/msgpack/msgpack-c/archive/cpp-%{version}.tar.gz
 Summary: MessagePack implementation for C and C++
@@ -74,8 +74,6 @@ DESTDIR="%{buildroot}" ninja install -C build
 
 %files -n %{libname}
 %{_libdir}/*.so.%{major}*
-# Bogus makefiles - we get .so.3 and .so.4.0.0
-%{_libdir}/*.so.4*
 
 %files -n %{devname}
 %{_includedir}/*
