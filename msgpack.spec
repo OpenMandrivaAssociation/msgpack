@@ -4,7 +4,7 @@
 %define staticname %mklibname msgpack -d -s
 
 Name: msgpack
-Version: 1.4.1
+Version: 2.0.0
 Release: 1
 Source0: https://github.com/msgpack/msgpack-c/archive/cpp-%{version}.tar.gz
 Summary: MessagePack implementation for C and C++
