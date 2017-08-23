@@ -4,7 +4,7 @@
 %define staticname %mklibname msgpack -d -s
 
 Name: msgpack
-Version: 2.1.1
+Version: 2.1.5
 Release: 1
 Source0: https://github.com/msgpack/msgpack-c/archive/cpp-%{version}.tar.gz
 Summary: MessagePack implementation for C and C++
@@ -79,6 +79,7 @@ DESTDIR="%{buildroot}" ninja install -C build
 %{_includedir}/*
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/*
+%{_libdir}/cmake/msgpack/*.cmake
 
 %files -n %{staticname}
 %{_libdir}/*.a
