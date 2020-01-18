@@ -4,15 +4,14 @@
 %define staticname %mklibname msgpack -d -s
 
 Name: msgpack
-Version: 2.1.5
-Release: 2
+Version:	3.2.1
+Release:	1
 Source0: https://github.com/msgpack/msgpack-c/archive/cpp-%{version}.tar.gz
 Summary: MessagePack implementation for C and C++
 URL: http://msgpack.org/
 License: Apache 2.0
 Group: System/Libraries
 BuildRequires: cmake
-BuildRequires: ninja
 
 %description
 MessagePack implementation for C and C++.
@@ -49,28 +48,19 @@ data among multiple languages like JSON. But it's faster and smaller.
 Small integers are encoded into a single byte, and typical short strings
 require only one extra byte in addition to the strings themselves.
 
-%package -n %{staticname}
-Summary: Static library for a MessagePack implementation for C and C++
-Group: System/Libraries
-Requires: %{devname} = %{EVRD}
-
-%description -n %{staticname}
-Static library for a MessagePack implementation for C and C++.
-
-MessagePack is an efficient binary serialization format. It lets you exchange
-data among multiple languages like JSON. But it's faster and smaller.
-Small integers are encoded into a single byte, and typical short strings
-require only one extra byte in addition to the strings themselves.
-
 %prep
 %setup -qn msgpack-c-cpp-%{version}
-%cmake -G Ninja
+%cmake \
+	-DMSGPACK_CXX11=ON \
+	-DMSGPACK_BUILD_EXAMPLES=OFF \
+	-DMSGPACK_ENABLE_CXX=ON \
+	-DMSGPACK_ENABLE_STATIC=ON
 
 %build
-ninja -C build
+%make_build -C build
 
 %install
-DESTDIR="%{buildroot}" ninja install -C build
+%make_install -C build
 
 %files -n %{libname}
 %{_libdir}/*.so.%{major}*
@@ -80,6 +70,3 @@ DESTDIR="%{buildroot}" ninja install -C build
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/*
 %{_libdir}/cmake/msgpack/*.cmake
-
-%files -n %{staticname}
-%{_libdir}/*.a
