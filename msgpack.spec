@@ -15,7 +15,9 @@ URL: http://msgpack.org/
 License: Apache 2.0
 Group: System/Libraries
 BuildRequires: cmake
+%if ! %{cross_compiling}
 BuildRequires: pkgconfig(gtest)
+%endif
 
 %description
 MessagePack implementation for C and C++.
