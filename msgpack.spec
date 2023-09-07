@@ -15,6 +15,8 @@ URL: http://msgpack.org/
 License: Apache 2.0
 Group: System/Libraries
 BuildRequires: cmake
+BuildRequires: pkgconfig(zlib)
+BuildRequires: doxygen
 %if ! %{cross_compiling}
 BuildRequires: pkgconfig(gtest)
 %endif
@@ -59,13 +61,10 @@ require only one extra byte in addition to the strings themselves.
 %prep
 %autosetup -p1 -n msgpack-c-c-%{version}
 %cmake \
-	-DMSGPACK_CXX11=ON \
 	-DMSGPACK_BUILD_EXAMPLES=OFF \
 %if %{cross_compiling}
-	-DMSGPACK_BUILD_TESTS=OFF \
+	-DMSGPACK_BUILD_TESTS=OFF
 %endif
-	-DMSGPACK_ENABLE_CXX=ON \
-	-DMSGPACK_ENABLE_STATIC=ON
 
 %build
 %make_build -C build
