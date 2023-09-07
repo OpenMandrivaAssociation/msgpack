@@ -58,6 +58,9 @@ require only one extra byte in addition to the strings themselves.
 %cmake \
 	-DMSGPACK_CXX11=ON \
 	-DMSGPACK_BUILD_EXAMPLES=OFF \
+%if %{cross_compiling}
+	-DMSGPACK_BUILD_TESTS=OFF \
+%endif
 	-DMSGPACK_ENABLE_CXX=ON \
 	-DMSGPACK_ENABLE_STATIC=ON
 
