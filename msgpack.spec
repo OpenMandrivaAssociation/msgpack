@@ -8,7 +8,7 @@
 
 Name: msgpack
 Version:	6.0.0
-Release:	1
+Release:	2
 Source0: https://github.com/msgpack/msgpack-c/archive/c-%{version}.tar.gz
 Summary: MessagePack implementation for C and C++
 URL: https://msgpack.org/
