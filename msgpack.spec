@@ -14,6 +14,7 @@ Summary: MessagePack implementation for C and C++
 URL: https://msgpack.org/
 License: Apache 2.0
 Group: System/Libraries
+BuildRequires: make
 BuildRequires: cmake
 BuildRequires: pkgconfig(zlib)
 BuildRequires: doxygen
